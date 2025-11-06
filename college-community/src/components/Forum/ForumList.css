@@ -1,0 +1,24 @@
+.forum-list {
+  max-width: 600px;
+  margin: auto;
+}
+
+.new-post-btn {
+  background-color: #004aad;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.forum-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.forum-list li {
+  background: #eee;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 4px;
+}

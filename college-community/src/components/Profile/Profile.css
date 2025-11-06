@@ -1,0 +1,11 @@
+.profile-container {
+  text-align: center;
+}
+
+.profile-card {
+  background: #f4f4f4;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 8px;
+  margin-top: 20px;
+}

@@ -1,0 +1,16 @@
+.predictor-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.predictor-container input {
+  padding: 8px;
+  margin: 8px;
+}
+
+.predictor-container button {
+  padding: 8px 16px;
+  background-color: #004aad;
+  color: white;
+  border: none;
+}
