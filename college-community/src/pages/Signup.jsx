@@ -1,73 +1,49 @@
-import React, { useState } from "react";
-import "./Signup.css";
-import { registerUser } from "../api/auth";
+
+import React from 'react';
+import { IoMailOutline, IoLockClosedOutline, IoPersonOutline, IoLogoGoogle } from 'react-icons/io5';
+import AuthLayout from './AuthLayout';
+import './Login.css';
+
+
+const SignUpForm = () => (
+  <form className="auth-form signup-form" onSubmit={(e) => e.preventDefault()}>
+    <h2>Create Account</h2>
+
+    <div className="social-login">
+      <button className="social-button google transition-300">
+        <IoLogoGoogle /> Sign Up with Google
+      </button>
+    </div>
+    
+    <p className="or-separator"><span>OR</span></p>
+
+    <div className="input-group transition-300">
+      <IoPersonOutline className="input-icon" />
+      <input type="text" placeholder="Full Name" required />
+    </div>
+    
+    <div className="input-group transition-300">
+      <IoMailOutline className="input-icon" />
+      <input type="email" placeholder="College Email" required />
+    </div>
+
+    <div className="input-group transition-300">
+      <IoLockClosedOutline className="input-icon" />
+      <input type="password" placeholder="Set Password" required />
+    </div>
+
+    <button type="submit" className="btn btn-primary-auth transition-300">
+      Sign Up
+    </button>
+  </form>
+);
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    password2: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    console.log("Submitting signup...", formData);
-
-    const res = await registerUser(formData);
-
-    console.log("Response from backend:", res);
-
-    setLoading(false);
-
-    if (res.error) {
-      alert("Registration Failed ❌");
-    } else {
-      alert("Registration Successful ✅");
-    }
-  };
-
   return (
-    <div className="signup-container">
-      <h2>Create Account</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={formData.username}
-          onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-        />
-
-        <input
-          type="email"
-          placeholder="College Email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-        />
-
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={formData.password2}
-          onChange={(e) => setFormData({ ...formData, password2: e.target.value })}
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Signing up..." : "Sign Up"}
-        </button>
-      </form>
-    </div>
+    <AuthLayout 
+      form={<SignUpForm />} 
+      isLogin={false}
+    />
   );
 };
 

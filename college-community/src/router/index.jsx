@@ -1,14 +1,14 @@
-// src/router/index.js
+
 
 import { createBrowserRouter } from 'react-router-dom';
-import Home from './pages/Home';
-import App from './App';
-// Import other page components you have created
-import Forum from './components/Forum/ForumList'; 
-import Chatbot from './components/Chatbot/Chatbot';
-import Predictor from './components/PerformancePredictor/Predictor';
-import Notes from './components/NotesSummarizer/NotesSummarizer'; 
-// Placeholder components for other routes
+import Home from '../pages/Home';
+import App from '../App';
+
+import Forum from '../components/Forum/ForumList'; 
+import Chatbot from '../components/Chatbot/Chatbot';
+import Predictor from '../components/PerformancePredictor/Predictor';
+import Notes from '../components/NotesSummarizer/NotesSummarizer'; 
+
 const Dashboard = () => <div>Dashboard Page</div>;
 const Events = () => <div>Events Page</div>;
 const Login = () => <div>Login Page</div>;
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />, // The attractive, new Home Page
+        element: <Home />,
       },
       {
         path: '/dashboard',

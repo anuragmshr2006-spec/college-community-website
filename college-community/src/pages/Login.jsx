@@ -1,49 +1,58 @@
-import React, { useState } from "react";
-import "./Login.css";
-import { loginUser } from "../api/auth";
+// src/pages/Login.jsx// src/pages/Login.jsx
+
+
+
+ 
+
+// ... rest of the component
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { IoMailOutline, IoLockClosedOutline, IoLogoGoogle } from 'react-icons/io5';
+import AuthLayout from './AuthLayout'; // Import the new layout component
+import './Login.css';
+
+
+const LoginForm = () => (
+  <form className="auth-form login-form" onSubmit={(e) => e.preventDefault()}>
+    <h2>Sign In</h2>
+    <div className="social-login">
+      <button className="social-button google transition-300">
+        <IoLogoGoogle /> Log In with Google
+      </button>
+    </div>
+
+    <p className="or-separator"><span>OR</span></p>
+
+    <div className="input-group transition-300">
+      <IoMailOutline className="input-icon" />
+      <input type="email" placeholder="College Email" required />
+    </div>
+
+    <div className="input-group transition-300">
+      <IoLockClosedOutline className="input-icon" />
+      <input type="password" placeholder="Password" required />
+    </div>
+
+    <div className="form-footer">
+      <label>
+        <input type="checkbox" /> Remember Me
+      </label>
+      <Link to="#" className="forgot-password transition-300">Forgot Password?</Link>
+    </div>
+
+    <button type="submit" className="btn btn-primary-auth transition-300">
+      Sign In
+    </button>
+  </form>
+);
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("logging in...", formData);
-
-    const res = await loginUser(formData);
-
-    console.log("login response", res);
-
-    if (res.error) {
-      alert(res.error);
-    } else {
-      alert("Login Success ✅");
-    }
-  };
-
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="College Email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-        />
-
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <AuthLayout 
+      form={<LoginForm />} 
+      isLogin={true}
+    />
   );
 };
 
