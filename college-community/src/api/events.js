@@ -11,10 +11,10 @@ export async function fetchEvents() {
       },
     });
 
-    if (res.status === 401) return [];     // <- VERY IMPORTANT
+    if (res.status === 401) return [];     
     const data = await res.json();
 
-    if (!Array.isArray(data)) return [];   // <- another safeguard
+    if (!Array.isArray(data)) return [];   
 
     return data;
 
